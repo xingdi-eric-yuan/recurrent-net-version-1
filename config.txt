@@ -1,0 +1,41 @@
+/*
+*	Config File
+*/
+
+/*******************************************************
+*	
+*	General Parameters Config
+*
+*******************************************************/
+
+IS_GRADIENT_CHECKING = false;
+USE_LOG = false;
+NON_LINEARITY = NL_RELU;
+BATCH_SIZE = 50;
+
+TRAINING_EPOCHS = 50;
+ITER_PER_EPO = 100;
+LRATE_W = 3e-3;
+LRATE_B = 1e-3;
+NGRAM = 3;
+TRAINING_PERCENT = 0.80;
+
+/*******************************************************
+*	
+*	Layers Config
+*
+*******************************************************/
+
+$
+LAYER = HIDDEN;
+NUM_HIDDEN_NEURONS = 512;
+WEIGHT_DECAY = 1e-6;
+DROPOUT_RATE = 0.5;
+&
+
+$
+LAYER = SOFTMAX;
+NUM_CLASSES = 0;
+WEIGHT_DECAY = 1e-6;
+&
+
