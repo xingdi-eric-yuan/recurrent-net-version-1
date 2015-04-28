@@ -20,8 +20,7 @@ make
 See [my tech-blog](http://eric-yuan.me/). TODO...
 
 ##TODO
-log file
-blog post
+log file / blog post
 
 ##Config Files
 
