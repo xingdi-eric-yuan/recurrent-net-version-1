@@ -1,6 +1,4 @@
 #include "weights_IO.h"
-
-#define AT3D at<cv::Vec3d>
 using namespace cv;
 using namespace std;
 
@@ -22,27 +20,19 @@ save2txt(const Mat &data, string path, string str){
     fclose(pOut);
 }
 
-/*
 void 
-save2XML(string path, string name, const std::vector<Cvl> &CLayers, const std::vector<Fcl> &FClayers, const Smr &smr, const std::vector<string> &re_resolmap){
+save2XML(string path, string name, const std::vector<Hl> &Hiddenlayers, const Smr &smr, const std::vector<string> &re_resolmap){
 
     mkdir(path.c_str(), S_IRWXU | S_IRWXG | S_IROTH | S_IXOTH);
     string tmp = path + "/" + name + ".xml";
     FileStorage fs(tmp, FileStorage::WRITE);
     
     fs << "smr_W" << smr.W;
-    fs << "smr_b" << smr.b;
-    for(int i = 0; i < CLayers.size(); i++){
-        for(int j = 0; j < convConfig[i].KernelAmount; j++){
-            tmp = "convlayer" + std::to_string(i) + "_kernel_" + std::to_string(j);
-            fs << (tmp + "_W") << CLayers[i].layer[j].W;
-            fs << (tmp + "_b") << CLayers[i].layer[j].b;
-        }
-    }
-    for(int i = 0; i < FClayers.size(); i++){
-        tmp = "fclayer" + std::to_string(i);
-        fs << (tmp + "_W") << FClayers[i].W;
-        fs << (tmp + "_b") << FClayers[i].b;
+
+    for(int i = 0; i < Hiddenlayers.size(); i++){
+        tmp = "hlayer" + std::to_string(i);
+        fs << (tmp + "_W") << Hiddenlayers[i].W;
+        fs << (tmp + "_U") << Hiddenlayers[i].U;
     }
     fs << "re_resolmap" << re_resolmap;
     fs.release();
@@ -50,26 +40,18 @@ save2XML(string path, string name, const std::vector<Cvl> &CLayers, const std::v
 }
 
 void 
-readFromXML(string path, std::vector<Cvl> &CLayers, std::vector<Fcl> &FClayers, Smr &smr, std::vector<string> &re_resolmap){
+readFromXML(string path, std::vector<Hl> &Hiddenlayers, Smr &smr, std::vector<string> &re_resolmap){
 
     string tmp = "";
     FileStorage fs(path, FileStorage::READ);
     fs["smr_W"] >> smr.W;
-    fs["smr_b"] >> smr.b;
-    for(int i = 0; i < CLayers.size(); i++){
-        for(int j = 0; j < convConfig[i].KernelAmount; j++){
-            tmp = "convlayer" + std::to_string(i) + "_kernel_" + std::to_string(j);
-            fs[tmp + "_W"] >> CLayers[i].layer[j].W;
-            fs[tmp + "_b"] >> CLayers[i].layer[j].b;
-        }
-    }
-    for(int i = 0; i < FClayers.size(); i++){
-        tmp = "fclayer" + std::to_string(i);
-        fs[tmp + "_W"] >> FClayers[i].W;
-        fs[tmp + "_b"] >> FClayers[i].b;
+    for(int i = 0; i < Hiddenlayers.size(); i++){
+        tmp = "hlayer" + std::to_string(i);
+        fs[tmp + "_W"] >> Hiddenlayers[i].W;
+        fs[tmp + "_U"] >> Hiddenlayers[i].U;
     }
     fs["re_resolmap"] >> re_resolmap;
     fs.release();
     cout<<"Successfully read network information from "<<path<<"..."<<endl;
 }
-*/
+
