@@ -17,16 +17,16 @@ make
 ./rnn
 ```
 ##Structure and Algorithm
-See [my tech-blog](http://eric-yuan.me/). TODO...
+See [my tech-blog](http://eric-yuan.me/rnn1/).
 
 ##TODO
-log file / blog post
+...
 
 ##Config Files
 
 ####General Parameters Config
 * gradient checking (automatically disable dropout, and use tiny dataset)
-* store parameters into log file (for debugging, should be faster if not using it) TODO...
+* store parameters into log file (for debugging, should be faster if not using it)
 * batch size
 * non-linearity method (sigmoid, tanh, ReLU)
 * training epochs
