@@ -76,8 +76,10 @@ resolutioner(const std::vector<std::vector<singleWord> > &data, std::vector<std:
         tmpvec.clear();
         tmpvec = data[i];
         singleWord tmpsw("___PADDING___", 0);
-        for(int j = 0; j < nGram - 1; j++){
+        int len = (int)(nGram / 2);
+        for(int j = 0; j < len; j++){
             tmpvec.insert(tmpvec.begin(), tmpsw);
+            tmpvec.push_back(tmpsw);
         }
         for(int j = 0; j < tmpvec.size() - nGram + 1; j++){
             tmpresol.clear();

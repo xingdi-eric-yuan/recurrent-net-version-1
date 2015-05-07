@@ -6,43 +6,52 @@ void
 weightRandomInit(Hl &ntw, int inputsize, int hiddensize){
     double epsilon = 0.12;
     // weight between hidden layer with previous layer
-    ntw.U = Mat::ones(hiddensize, inputsize, CV_64FC1);
-    randu(ntw.U, Scalar(-1.0), Scalar(1.0));
-    ntw.U = ntw.U * epsilon;
-    ntw.bU = Mat::zeros(hiddensize, 1, CV_64FC1);
-    ntw.Ugrad = Mat::zeros(hiddensize, inputsize, CV_64FC1);
-    ntw.bUgrad = Mat::zeros(hiddensize, 1, CV_64FC1);
-    ntw.Ud2 = Mat::zeros(ntw.U.size(), CV_64FC1);
-    ntw.bUd2 = Mat::zeros(ntw.bU.size(), CV_64FC1);
+    ntw.U_l = Mat::ones(hiddensize, inputsize, CV_64FC1);
+    randu(ntw.U_l, Scalar(-1.0), Scalar(1.0));
+    ntw.U_l = ntw.U_l * epsilon;
+    ntw.U_lgrad = Mat::zeros(hiddensize, inputsize, CV_64FC1);
+    ntw.U_ld2 = Mat::zeros(ntw.U_l.size(), CV_64FC1);
     ntw.lr_U = lrate_w;
-    ntw.lr_bU = lrate_b;
-
-    ntw.W = Mat::ones(hiddensize, hiddensize, CV_64FC1);
-    randu(ntw.W, Scalar(-1.0), Scalar(1.0));
-    ntw.W = ntw.W * epsilon;
-    ntw.bW = Mat::zeros(hiddensize, 1, CV_64FC1);
-    ntw.Wgrad = Mat::zeros(hiddensize, hiddensize, CV_64FC1);
-    ntw.bWgrad = Mat::zeros(hiddensize, 1, CV_64FC1);
-    ntw.Wd2 = Mat::zeros(ntw.W.size(), CV_64FC1);
-    ntw.bWd2 = Mat::zeros(ntw.bW.size(), CV_64FC1);
+    
+    ntw.W_l = Mat::ones(hiddensize, hiddensize, CV_64FC1);
+    randu(ntw.W_l, Scalar(-1.0), Scalar(1.0));
+    ntw.W_l = ntw.W_l * epsilon;
+    ntw.W_lgrad = Mat::zeros(hiddensize, hiddensize, CV_64FC1);
+    ntw.W_ld2 = Mat::zeros(ntw.W_l.size(), CV_64FC1);
     ntw.lr_W = lrate_w;
-    ntw.lr_bW = lrate_b;
+
+    ntw.U_r = Mat::ones(hiddensize, inputsize, CV_64FC1);
+    randu(ntw.U_r, Scalar(-1.0), Scalar(1.0));
+    ntw.U_r = ntw.U_r * epsilon;
+    ntw.U_rgrad = Mat::zeros(hiddensize, inputsize, CV_64FC1);
+    ntw.U_rd2 = Mat::zeros(ntw.U_r.size(), CV_64FC1);
+    ntw.lr_U = lrate_w;
+    
+    ntw.W_r = Mat::ones(hiddensize, hiddensize, CV_64FC1);
+    randu(ntw.W_r, Scalar(-1.0), Scalar(1.0));
+    ntw.W_r = ntw.W_r * epsilon;
+    ntw.W_rgrad = Mat::zeros(hiddensize, hiddensize, CV_64FC1);
+    ntw.W_rd2 = Mat::zeros(ntw.W_r.size(), CV_64FC1);
+    ntw.lr_W = lrate_w;
 }
 
 void 
 weightRandomInit(Smr &smr, int nclasses, int nfeatures){
     double epsilon = 0.12;
-    smr.W = Mat::ones(nclasses, nfeatures, CV_64FC1);
-    randu(smr.W, Scalar(-1.0), Scalar(1.0));
-    smr.W = smr.W * epsilon;
-    smr.b = Mat::zeros(nclasses, 1, CV_64FC1);
+    smr.W_l = Mat::ones(nclasses, nfeatures, CV_64FC1);
+    randu(smr.W_l, Scalar(-1.0), Scalar(1.0));
+    smr.W_l = smr.W_l * epsilon;
+    smr.W_lgrad = Mat::zeros(nclasses, nfeatures, CV_64FC1);
+    smr.W_ld2 = Mat::zeros(smr.W_l.size(), CV_64FC1);
+
+    smr.W_r = Mat::ones(nclasses, nfeatures, CV_64FC1);
+    randu(smr.W_r, Scalar(-1.0), Scalar(1.0));
+    smr.W_r = smr.W_r * epsilon;
+    smr.W_rgrad = Mat::zeros(nclasses, nfeatures, CV_64FC1);
+    smr.W_rd2 = Mat::zeros(smr.W_r.size(), CV_64FC1);
+    
     smr.cost = 0.0;
-    smr.Wgrad = Mat::zeros(nclasses, nfeatures, CV_64FC1);
-    smr.bgrad = Mat::zeros(nclasses, 1, CV_64FC1);
-    smr.Wd2 = Mat::zeros(smr.W.size(), CV_64FC1);
-    smr.bd2 = Mat::zeros(smr.b.size(), CV_64FC1);
     smr.lr_W = lrate_w;
-    smr.lr_b = lrate_b;
 }
 
 void

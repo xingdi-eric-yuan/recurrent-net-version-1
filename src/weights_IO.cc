@@ -27,12 +27,15 @@ save2XML(string path, string name, const std::vector<Hl> &Hiddenlayers, const Sm
     string tmp = path + "/" + name + ".xml";
     FileStorage fs(tmp, FileStorage::WRITE);
     
-    fs << "smr_W" << smr.W;
+    fs << "smr_W_l" << smr.W_l;
+    fs << "smr_W_r" << smr.W_r;
 
     for(int i = 0; i < Hiddenlayers.size(); i++){
         tmp = "hlayer" + std::to_string(i);
-        fs << (tmp + "_W") << Hiddenlayers[i].W;
-        fs << (tmp + "_U") << Hiddenlayers[i].U;
+        fs << (tmp + "_W_l") << Hiddenlayers[i].W_l;
+        fs << (tmp + "_U_l") << Hiddenlayers[i].U_l;
+        fs << (tmp + "_W_r") << Hiddenlayers[i].W_r;
+        fs << (tmp + "_U_r") << Hiddenlayers[i].U_r;
     }
     fs << "re_resolmap" << re_resolmap;
     fs.release();
@@ -44,11 +47,14 @@ readFromXML(string path, std::vector<Hl> &Hiddenlayers, Smr &smr, std::vector<st
 
     string tmp = "";
     FileStorage fs(path, FileStorage::READ);
-    fs["smr_W"] >> smr.W;
+    fs["smr_W_l"] >> smr.W_l;
+    fs["smr_W_r"] >> smr.W_r;
     for(int i = 0; i < Hiddenlayers.size(); i++){
         tmp = "hlayer" + std::to_string(i);
-        fs[tmp + "_W"] >> Hiddenlayers[i].W;
-        fs[tmp + "_U"] >> Hiddenlayers[i].U;
+        fs[tmp + "_W_l"] >> Hiddenlayers[i].W_l;
+        fs[tmp + "_U_l"] >> Hiddenlayers[i].U_l;
+        fs[tmp + "_W_r"] >> Hiddenlayers[i].W_r;
+        fs[tmp + "_U_r"] >> Hiddenlayers[i].U_r;
     }
     fs["re_resolmap"] >> re_resolmap;
     fs.release();

@@ -17,7 +17,7 @@ TRAINING_EPOCHS = 30;
 ITER_PER_EPO = 100;
 LRATE_W = 3e-3;
 LRATE_B = 1e-3;
-NGRAM = 3;
+NGRAM = 5;
 TRAINING_PERCENT = 0.80;
 
 /*******************************************************

@@ -155,8 +155,9 @@ getSample(const std::vector<std::vector<int> >& src1, std::vector<Mat>& dst1, co
             Rect roi = Rect(i, 0, 1, re_wordmap.size());
             Mat tmp2 = dst1[j](roi);
             tmp1.copyTo(tmp2);
+            dst2.ATD(j, i) = src2[randomNum][j];
         }
-        dst2.ATD(0, i) = src2[randomNum][T - 1];
+//        dst2.ATD(0, i) = src2[randomNum][T - 1];
     }
 }
 
@@ -183,8 +184,9 @@ void
 getLabelMat(const std::vector<std::vector<int> >& src, Mat& dst){
     int _size = dst.cols;
     int T = src[0].size();
+    int mid = (int)(T /2.0);
     for(int i = 0; i < _size; i++){
-        dst.ATD(0, i) = src[i][T - 1];
+        dst.ATD(0, i) = src[i][mid];
     }
 }
 

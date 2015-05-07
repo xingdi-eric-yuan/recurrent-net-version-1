@@ -19,33 +19,30 @@ struct singleWord {
 ///////////////////////////////////
 
 typedef struct HiddenLayer{
-    Mat W;  // weight between current time t with previous time t-1
-    Mat bW;
-    Mat U;  // weight between hidden layer with previous layer
-    Mat bU;
-    Mat Wgrad;
-    Mat bWgrad;
-    Mat Ugrad;
-    Mat bUgrad;
-    Mat Wd2;
-    Mat bWd2;
-    Mat Ud2;
-    Mat bUd2;
-    double lr_bW;
+    Mat W_l;  // weight between current time t with previous time t-1
+    Mat U_l;  // weight between hidden layer with previous layer
+    Mat W_lgrad;
+    Mat U_lgrad;
+    Mat W_ld2;
+    Mat U_ld2;
+    Mat W_r;  // weight between current time t with previous time t-1
+    Mat U_r;  // weight between hidden layer with previous layer
+    Mat W_rgrad;
+    Mat U_rgrad;
+    Mat W_rd2;
+    Mat U_rd2;
     double lr_W;
-    double lr_bU;
     double lr_U;
 }Hl;
 
 typedef struct SoftmaxRegession{
-    Mat W;
-    Mat b;
-    Mat Wgrad;
-    Mat bgrad;
+    Mat W_l;
+    Mat W_lgrad;
+    Mat W_ld2;
+    Mat W_r;
+    Mat W_rgrad;
+    Mat W_rd2;
     double cost;
-    Mat Wd2;
-    Mat bd2;
-    double lr_b;
     double lr_W;
 }Smr;
 

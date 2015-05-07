@@ -8,6 +8,9 @@ using namespace cv;
 
 void save2txt(const Mat &, string, string);
 
+
 void save2XML(string, string, const std::vector<Hl> &, const Smr &, const std::vector<string> &);
 
 void readFromXML(string, std::vector<Hl> &, Smr &, std::vector<string> &);
+
+

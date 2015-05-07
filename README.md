@@ -1,7 +1,7 @@
-#recurrent-net-version-1.0
+#recurrent-net-version-1.1
 =====================
 
-Simplest uni-directional recurrent neural network (C++ / OpenCV).
+Simplest bi-directional recurrent neural network (C++ / OpenCV).
 
 To run this code, you should have 
 * OpenCV.
@@ -20,7 +20,7 @@ make
 See [my tech-blog](http://eric-yuan.me/rnn1/).
 
 ##TODO
-...
+New post for bi-directional rnn...
 
 ##Config Files
 
